@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>RPS Game</title>
+</head>
+<body>
+    <div class="body">
+        <center>
+        <div>
+            <div id= points><h1>ROCK PAPER SCISSOR</h1></div>
+            Opponent : <input type="text" id="op"><br>
+            You : <input type="text" id="me">
+        </div>
+        <div>
+            <div id='endRslt' style='display:none;'>
+                <input type="text" name="" id="ans">
+                <button onclick="NewGame()" id="newGam">New Game</button>
+            </div>
+        </div>
+        <div>
+            <div id='gmControler'>
+                <button onclick="ImMe('1')" id="r">Rock</button>
+                <button onclick="ImMe('2')"id="p">Paper</button>
+                <button onclick="ImMe('3')" id="s">Scissor</button>
+            </div>
+
+        </div>
+    </center>
+
+    </div>
+        
+</body>
+<script>
+    var me = '',op='',ans='',glp={'1':'rock','2':'paper','3':'scissor'};
+function ImPc(){
+    op =  Object.keys(glp)[Math.floor(Math.random()*Object.keys(glp).length)];
+
+}
+function ImJudg(){
+    ImPc();
+    document.getElementById('op').value = glp[op];
+    document.getElementById('me').value = glp[me];
+    if(op == me){
+        ans = "draw"
+    }else{
+        ans = 'someoneWin';
+        console.log(me, op);
+        switch(me){
+            case "1" :
+                switch(op){
+                    case "2" :
+                      ans = 'You Lose by '+glp[op];
+                    break
+                    case "3" :
+                      ans = 'You Win by '+glp[op];
+                    break
+                }                
+            break;
+            case "2" :
+                switch(op){
+                    case "1" :
+                      ans = 'You  Win by '+glp[op];
+                    break
+                    case "3" :
+                      ans = 'You Lose by '+glp[op];
+                    break
+                }                
+            break;
+            case "3" :
+                switch(op){
+                    case "1" :
+                      ans = 'You Lose by '+glp[op];
+                    break
+                    case "2" :
+                      ans = 'You Win by '+glp[op];
+                    break
+                }                
+            break;
+            default :
+                 ans = me+' '+op;
+            break;
+        }
+    }
+    document.getElementById('endRslt').style.display='block';
+    document.getElementById('gmControler').style.display='none';
+    document.getElementById('ans').value = ans;
+}
+function NewGame(){
+    document.getElementById('op').value = '';
+    document.getElementById('me').value = '';
+    document.getElementById('ans').value = '';
+    me = ''; op='';
+    document.getElementById('gmControler').style.display='block';
+    document.getElementById('endRslt').style.display='none';
+}
+function ImMe(chs){
+    me = chs
+    ImJudg();
+}
+</script>
+</html>
