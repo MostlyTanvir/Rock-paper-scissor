@@ -3,35 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>RPS Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1320px;
+            margin: 0 auto;
+        }
+        .body {
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .pointform{
+            display: flex;
+            margin: 0 auto;
+            width: 50%;
+            padding-left: 360px;
+        }
+        .point_text{
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <div class="body">
-        <center>
-        <div>
-            <div id= points><h1>ROCK PAPER SCISSOR</h1></div>
-            Opponent : <input type="text" id="op"><br>
-            You : <input type="text" id="me">
-        </div>
-        <div>
-            <div id='endRslt' style='display:none;'>
-                <input type="text" name="" id="ans">
-                <button onclick="NewGame()" id="newGam">New Game</button>
+        <div class="container">
+            <div>
+                <div id="points">
+                    <h1>ROCK PAPER SCISSOR</h1>
+                </div>
+                <div class="pointform">
+                    <div class="point_text">
+                        <p>Opponent:</p>
+                        <p>You :</p>
+                    </div>
+                  
+                  <div class="point_form_input">
+                    <input type="text" id="op"><br>
+                    <input type="text" id="me">
+                  </div>
+                </div>
+                
+            </div>
+            <div>
+                <div id="endRslt" style="display:none;">
+                    <input type="text" name="" id="ans">
+                    <button onclick="NewGame()" id="newGam">New Game</button>
+                </div>
+            </div>
+            <div>
+                <div id="gmControler">
+                    <button onclick="ImMe('1')" id="r">Rock</button>
+                    <button onclick="ImMe('2')" id="p">Paper</button>
+                    <button onclick="ImMe('3')" id="s">Scissor</button>
+                </div>
             </div>
         </div>
-        <div>
-            <div id='gmControler'>
-                <button onclick="ImMe('1')" id="r">Rock</button>
-                <button onclick="ImMe('2')"id="p">Paper</button>
-                <button onclick="ImMe('3')" id="s">Scissor</button>
-            </div>
-
-        </div>
-    </center>
-
+            
     </div>
-        
 </body>
 <script>
     var me = '',op='',ans='',glp={'1':'rock','2':'paper','3':'scissor'};
